@@ -4,6 +4,7 @@ import Hero from "./components/custom/Hero";
 import CreateTrip from "./create-trip";
 import ViewTrip from "./view-trip/[tripid]";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { LoadScript } from "@react-google-maps/api";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,12 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <LoadScript
+        googleMapsApiKey={import.meta.env.VITE_TRIP_API_KEY}
+        libraries={["marker"]}
+      >
+        <RouterProvider router={router} />
+      </LoadScript>
     </>
   );
 }

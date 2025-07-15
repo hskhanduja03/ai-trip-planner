@@ -15,7 +15,7 @@ import { db } from "@/service/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 import { ring2 } from "ldrs";
-import axios from 'axios';
+import TripVisualizerCanvas from "../components/TripVisualizerCanvas.jsx";
 
 function CreateTrip() {
   const [place, setPlace] = React.useState("");
@@ -54,7 +54,7 @@ function CreateTrip() {
           const { latitude, longitude } = position.coords;
 
           try {
-            const apiKey = import.meta.env.VITE_OPENCAGE_KEY; 
+            const apiKey = import.meta.env.VITE_OPENCAGE_KEY;
             const res = await fetch(
               `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`
             );
@@ -105,8 +105,6 @@ function CreateTrip() {
 
     getLocation();
   }, []);
-
-
 
   const handleInputChange = (name, value) => {
     setFormData({
@@ -172,6 +170,7 @@ function CreateTrip() {
   //Rendering the form
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 mt-10 max-w-4xl mx-auto">
+      {/* {loading && <TripVisualizerCanvas destination={formData.location} />} */}
       <h2 className="font-bold text-3xl">
         # Tell us your travel preferences 🏖️
       </h2>
@@ -207,7 +206,6 @@ function CreateTrip() {
           }}
         />
       </div>
-
       <div>
         <h2 className="text-xl my-3 font-medium">What is your budget ?</h2>
         <div className="grid grid-cols-3 gap-5 mt-5">
@@ -226,7 +224,6 @@ function CreateTrip() {
           ))}
         </div>
       </div>
-
       <div>
         <h2 className="text-xl my-3 font-medium">
           Whome do you plan to travel with
@@ -248,7 +245,6 @@ function CreateTrip() {
           ))}
         </div>
       </div>
-
       <div className="my-10 flex flex-col items-center">
         <Button
           disabled={loading}
