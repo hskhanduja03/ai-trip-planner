@@ -51,7 +51,7 @@ function Hotels({ tripInfo }) {
                     📍 {hotel.hotelAddress}
                   </h2>
                   <h2 className="text-xs text-gray-600 mt-1 font-bold">
-                    💵 {hotel.price}
+                    💵 {hotel.currentPriceINR_2Bedroom}
                   </h2>
                   <h2 className="text-xs text-gray-600 mt-1">
                     ⭐ {hotel.rating} stars

@@ -1,10 +1,10 @@
-import React from 'react'
-import { IoIosSend } from "react-icons/io"
-import { Link } from 'react-router-dom'
+import React from "react";
+import { IoIosSend } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 function Dailyplan({ tripInfo }) {
   if (!tripInfo || !tripInfo.tripdata || !tripInfo.tripdata.itinerary) {
-    return <div>Itinerary information is not available</div>
+    return <div>Itinerary information is not available</div>;
   }
 
   return (
@@ -17,24 +17,39 @@ function Dailyplan({ tripInfo }) {
           {day.plan.map((place, placeIndex) => (
             <div key={placeIndex} className="mb-6 last:mb-0">
               <div className="flex items-start">
-                <img 
-                  src={"https://placehold.co/1080x1080"} 
-                  alt={place.placeName} 
+                <img
+                  src={"https://placehold.co/1080x1080"}
+                  alt={place.placeName}
                   className="w-24 h-24 object-cover rounded-md mr-4"
                 />
                 <div>
                   <h4 className="font-semibold text-lg">{place.placeName}</h4>
-                  <p className="text-sm text-gray-600 mb-2">{place.placeDetails}</p>
+                  <p className="text-sm text-gray-600 mb-2">
+                    {place.placeDetails}
+                  </p>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">🕒 {place.timeToTravel}</span>
-                    <span className="bg-green-100 text-green-800 px-2 py-1 rounded">💲 {place.ticketPricing}</span>
-                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded">📍 {place.geoCoordinates}</span>
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                      🕒 {place.timeToTravel}
+                    </span>
+                    <span className="bg-green-100 text-green-800 px-2 py-1 rounded">
+                      💲 {place.ticketPricing}
+                    </span>
+                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                      near -📍 {place.geoCoordinates}
+                    </span>
                   </div>
                 </div>
               </div>
               <div className="mt-3">
-                <Link to={`https://www.google.com/maps/search/?api=1&query=${place.geoCoordinates}`} target="_blank">
-                  <button variant="outline" size="sm" className=" flex gap-1 items-center justify-center text-xs">
+                <Link
+                  to={`https://www.google.com/maps/search/?api=1&query=${place.placeName} in ${tripInfo.userSelection.location}`}
+                  target="_blank"
+                >
+                  <button
+                    variant="outline"
+                    size="sm"
+                    className=" flex gap-1 items-center justify-center text-xs"
+                  >
                     <IoIosSend className="mr-1" /> View on Map
                   </button>
                 </Link>
@@ -44,7 +59,7 @@ function Dailyplan({ tripInfo }) {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Dailyplan
+export default Dailyplan;
