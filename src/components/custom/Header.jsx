@@ -1,5 +1,5 @@
+import React from 'react'
 import { Button } from '../ui/button'
-import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
         </div>
       </a>
       <div className="flex gap-2 items-center">
-        <Link to="/create-trip"><Button>Get Started</Button></Link>
+        <a href="/create-trip"><Button>Get Started</Button></a>
       </div>
     </div>
     </>
